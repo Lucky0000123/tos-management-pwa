@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="https://public-frontend-cos.metadl.com/mgx/img/favicon.png" type="image/png">
+  <title>TOS Pile Status Manager</title>
+  <meta name="description" content="Temporary Ore Storage pile status management for site workers" />
+  <meta name="author" content="MGX" />
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  
+  <!-- iOS PWA Support -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="TOS Manager">
+  <link rel="apple-touch-icon" href="https://public-frontend-cos.metadl.com/mgx/img/favicon.png">
+  
+  <!-- Android PWA Support -->
+  <meta name="theme-color" content="#2563eb">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="TOS Pile Status Manager" />
+  <meta property="og:description" content="Temporary Ore Storage pile status management for site workers" />
+  <meta property="og:type" content="website" />
+
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+  
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((registration) => {
+            console.log('SW registered: ', registration);
+          })
+          .catch((registrationError) => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+  </script>
+</body>
+
+</html>
